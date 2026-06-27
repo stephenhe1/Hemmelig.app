@@ -10,7 +10,7 @@ export default defineConfig({
     globalSetup: './tests/e2e/global-setup.ts',
     globalTeardown: './tests/e2e/global-teardown.ts',
     use: {
-        baseURL: 'http://localhost:5173',
+        baseURL: 'http://localhost:4000',
         trace: 'on-first-retry',
         screenshot: 'only-on-failure',
     },
@@ -20,13 +20,4 @@ export default defineConfig({
             use: { ...devices['Desktop Chrome'] },
         },
     ],
-    webServer: {
-        command: 'DATABASE_URL=file:./database/hemmelig-test.db npx vite',
-        url: 'http://localhost:5173',
-        reuseExistingServer: !process.env.CI,
-        timeout: 60000,
-        env: {
-            DATABASE_URL: 'file:./database/hemmelig-test.db',
-        },
-    },
 });
